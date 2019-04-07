@@ -1,6 +1,6 @@
 
 ## Laravel Docker
-- using docker 3.3 syntax
+- Docker compose 3.3 syntax
 - Adminer supported.
 
 ## How to use
@@ -11,16 +11,45 @@ Install docker and docker-compose to your pc.
 
 Step 2:
 
+Clone code repository then install dependencies:
 ```
 git clone
+npm install
+composer update
 ```
+
+Build docker images
 ```
-docker-compose up
+docker-compose build
+docker-compose up -d
 ```
+
 ```bash
 chmod -R 777 storage
 ```
 
+Running php artisan:
+
+```bash
+docker-compose exec php php artisan migrate
+```
+
+## Access the app and services
+Web application 
+```bash
+http://localhost:8025
+``` 
+
+Adminer
+```bash
+http://localhost:8080
+```
+
+Username: root  
+Password secret  
+
+You can edit these info in the **docker-compose.yml**
+
 ## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Free to make pull request. 
