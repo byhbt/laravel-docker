@@ -1,0 +1,45 @@
+version: '3.3'
+services:
+  nginx:
+    image: nginx:latest
+    restart: always
+    ports:
+      - 8025:80
+    depends_on:
+      - php
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+
+  php:
+    build: ./docker/php/
+    volumes:
+      - .:/var/www/html
+      - ./docker/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+    depends_on:
+      - db
+    environment:
+      - "DB_PORT=3306"
+      - "DB_HOST=db"
+      - "DB_USERNAME=root"
+      - "DB_NAME=qltp_dev"
+      - "DB_PASS=secret"
+
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      - MYSQL_DATABASE=qltp_dev
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=secret
+  adminer:
+    image: adminer
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - 8080:8080
+volumes:
+  db_data:
