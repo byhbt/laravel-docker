@@ -37,16 +37,21 @@ docker-compose exec php php artisan migrate
 ## Access the app and services
 Web application 
 ```bash
-http://localhost:8025
-``` 
-
-Adminer
-```bash
 http://localhost:8080
 ```
 
-Username: root  
-Password secret  
+Redis Commander
+```bash
+http://localhost:8081
+```
+
+Adminer
+```bash
+http://localhost:8082
+```
+
+Username: root
+Password: secret
 
 You can edit these info in the **docker-compose.yml**
 
