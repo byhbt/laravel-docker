@@ -1,7 +1,8 @@
 
 ## Laravel Docker
-- Docker compose 3.3 syntax
-- Adminer supported.
+- Docker compose 3.3 syntax.
+- Adminer: it's simple than PHPMyAdmin.
+- Redis with web admin (RedisCommander).
 
 ## How to use
 
@@ -35,7 +36,7 @@ docker-compose exec php php artisan migrate
 ```
 
 ## Access the app and services
-Web application 
+Application Homepage
 ```bash
 http://localhost:8080
 ```
@@ -54,6 +55,14 @@ Username: root
 Password: secret
 
 You can edit these info in the **docker-compose.yml**
+
+## FAQ
+1. File permission problem:
+Ref: [If you are running Docker on Linux, the files created are owned by root.](https://docs.docker.com/compose/django/)
+
+```bash
+sudo chown -R $USER:$USER .
+```
 
 ## Contributing
 
