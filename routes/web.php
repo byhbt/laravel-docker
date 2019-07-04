@@ -11,6 +11,14 @@
 |
 */
 
+use Illuminate\Support\Facades\Redis;
+
 Route::get('/', function () {
-    return view('welcome');
+    dd(Auspost::postage()->listDomesticLetterSizes());
+});
+
+
+Route::get('/redis', function () {
+    $visits = Redis::Incr('visits');
+    return $visits;
 });
