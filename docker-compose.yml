@@ -2,7 +2,6 @@ version: '3.3'
 services:
   nginx:
     image: nginx:latest
-    restart: always
     ports:
       - 8080:80
     depends_on:
@@ -23,7 +22,7 @@ services:
       - "DB_PORT=3306"
       - "DB_HOST=db"
       - "DB_USERNAME=root"
-      - "DB_NAME=qltp_dev"
+      - "DB_NAME=mycoolapp_dev"
       - "DB_PASS=secret"
 
   db:
@@ -31,7 +30,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     environment:
-      - MYSQL_DATABASE=qltp_dev
+      - MYSQL_DATABASE=mycoolapp_dev
       - MYSQL_ROOT_PASSWORD=secret
       - MYSQL_USER=root
       - MYSQL_PASSWORD=secret
@@ -50,10 +49,12 @@ services:
 
   adminer:
     image: adminer
-    restart: always
     depends_on:
       - db
     ports:
       - 8082:8080
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+
 volumes:
   db_data:

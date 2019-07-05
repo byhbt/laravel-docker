@@ -14,7 +14,7 @@
 use Illuminate\Support\Facades\Redis;
 
 Route::get('/', function () {
-    dd(Auspost::postage()->listDomesticLetterSizes());
+    echo "hello world";
 });
 
 
