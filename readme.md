@@ -1,8 +1,7 @@
 
 ## Laravel Docker
-- Docker compose 3.3 syntax.
 - Adminer: it's simple than PHPMyAdmin.
-- Redis with web admin (RedisCommander).
+But because of IPV6 problem, so I use version *4.2.5* https://github.com/TimWolla/docker-adminer/issues/40
 
 ## How to use
 
@@ -38,17 +37,12 @@ docker-compose exec php php artisan migrate
 ## Access the app and services
 Application Homepage
 ```bash
-http://localhost:8080
-```
-
-Redis Commander
-```bash
-http://localhost:8081
+http://localhost:8989
 ```
 
 Adminer
 ```bash
-http://localhost:8082
+http://localhost:8990
 ```
 
 Username: root
@@ -64,6 +58,11 @@ Ref: [If you are running Docker on Linux, the files created are owned by root.](
 sudo chown -R $USER:$USER .
 ```
 
+## References:
+
+https://qiita.com/dyoshikawa/items/63a974b5aee488b080f8
+
 ## Contributing
 
 Free to make pull request. 
+

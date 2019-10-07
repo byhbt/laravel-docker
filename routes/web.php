@@ -9,14 +9,13 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 use Illuminate\Support\Facades\Redis;
 
 Route::get('/', function () {
-    echo "hello world";
+    phpinfo();
 });
-
 
 Route::get('/redis', function () {
     $visits = Redis::Incr('visits');
